@@ -6,10 +6,10 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    color: beige;
+    color: #fff;
 }
     a {
-        color: beige;
+        color: #fff;
         text-decoration: none;
     }
 
@@ -19,13 +19,11 @@ body {
     }
 
     .left{
-        #background-color: #1b6d85;
         width: 20%;
         height: 650px;
         float: left;
     }
     .right{
-        #background-color: #1CBF11;
         width: 80%;
         float:right;
         height: auto;
@@ -35,7 +33,7 @@ body {
         float: left;
         text-align: center;
         line-height: 2px;
-        margin: 20 ;
+        margin: 20px ;
     }
 </style>
 
@@ -54,8 +52,8 @@ body {
         <ul>
             <li><a href="{% url 'myauth:hot' %}">热门推荐</a>></li>
             <li><a href="{% url 'myauth:recommd1' %}">量身定制一</a>></li>
-            <li><a href="{% url 'myauth:recommd2' %}">量身定制二</a>></li>
-            <li><a href="{% url 'myauth:recommd3' %}">量身定制三</a>></li>
+{#            <li><a href="{% url 'myauth:recommd2' %}">量身定制二</a>></li>#}
+{#            <li><a href="{% url 'myauth:recommd3' %}">量身定制三</a>></li>#}
         </ul>
     </div>
 

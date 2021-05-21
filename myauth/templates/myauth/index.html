@@ -14,9 +14,9 @@ body {
         text-decoration: none;
     }
 
-    .wrapper {
-            border: 1px solid #000;
-        }
+        .wrapper {
+                margin-bottom: 8px;
+            }
         .wrapper ul {
             display: table;		 /*这里是关键步骤：*/
             margin: 0 auto;      /*让ul在div中水平居中 */
@@ -35,9 +35,9 @@ body {
             width: 140px;        /*任意设置li的宽度，不设置宽度的话也可以设置padding*/
         }
 
-     .movie {
-            border: 1px solid #000;
-        }
+     {#.movie {#}
+     {#       border: 1px solid #000;#}
+     {#   }#}
         .movie ul {
             display: table;		 /*这里是关键步骤：*/
             margin: 0 auto;      /*让ul在div中水平居中 */
@@ -106,9 +106,9 @@ body {
             {#float: left;#}
             {#left: 300px;#}
         }
-        .title {
-            font-size: 20px;
-        }
+        {#.title {#}
+        {#    font-size: 20px;#}
+        {#}#}
         .box-top {
             margin: 20px auto;
             width: 90%;
@@ -126,6 +126,21 @@ body {
        .middle .navbar .layui-input-inline {
             width: 90%;
         }
+       .welcome {
+           margin-right: 30px;
+       }
+       h4 {
+           {#width: 200px;#}
+           {#background-color: #46b8da;#}
+           color: #fff;
+           text-align: center;
+       }
+       .movie .showMovie .layui-input-inline {
+            width: 100px;
+        }
+       .score {
+           margin-bottom: 8px;
+       }
         </style>
 </head>
 <body>
@@ -135,7 +150,7 @@ body {
          <div class="left" >
             <span class="title">邮电影网</span>
             {% if user.is_authenticated %}
-                <span>欢迎你：{{ user.username }}</span>
+                <span class="welcome">欢迎你{{ user.username }}</span>
                 <a href="{% url 'myauth:slogout' %}">登出</a>
                 <a href="{% url 'myauth:user_center' %}">个人中心</a>
                 <br>
@@ -180,49 +195,49 @@ body {
             <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="动作" name="info">
-                <button type="submit">动作</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >动作</button>
             </form></li>
 
             <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="剧情" name="info">
-                <button type="submit">剧情</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >剧情</button>
             </form></li>
 
            <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="爱情" name="info">
-                <button type="submit">爱情</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >爱情</button>
             </form></li>
 
             <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="喜剧" name="info">
-                <button type="submit">喜剧</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >喜剧</button>
             </form></li>
 
             <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="动画" name="info">
-                <button type="submit">动画</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >动画</button>
             </form></li>
 
            <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="科幻" name="info">
-                <button type="submit">科幻</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >科幻</button>
             </form></li>
 
             <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="犯罪" name="info">
-                <button type="submit">犯罪</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >犯罪</button>
             </form></li>
 
             <li><form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" value="恐怖" name="info">
-                <button type="submit">恐怖</button>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" >恐怖</button>
             </form></li>
         </ul>
  </div>
@@ -237,16 +252,19 @@ body {
                        <form action="{% url 'myauth:showMovie' %}" method="post">
                            {% csrf_token %}
                            <input type="hidden" value={{ x.movie_name }} name="movie_name">
-                           <button type="submit">{{ x.movie_name }}</button>
+                           <button type="submit" style="width: 200px;" class="layui-btn layui-btn-fluid">{{ x.movie_name }}</button>
                        </form>
                    </div>
                    <h4>大众评分：{{ x.movie_point }}</h4>
-                 <form action="" method="post">
+                 <form action="" method="post" class="score">
                        {% csrf_token %}
                          <input type="hidden" value={{ x.id }} name="movie_id">
                         <input type="hidden" value="{{ type }}" name="info">
-                        <input type="number" step="0.1" name="Score" placeholder="请输入你的评分" />
-                       <button type="submit" class="submit_button" onclick="submitAction">提交评分</button>
+{#                        <input type="number" step="0.1" name="Score" placeholder="请输入你的评分" />#}
+                        <div class="layui-input-inline">
+                            <input type="number" name="Score" placeholder="输入评分" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                        </div>
+                       <button type="submit" class="btn btn-outline-success my-2 my-sm-0 layui-btn layui-btn-normal" onclick="submitAction">提交评分</button>
                    </form>
                </div>
            {% endfor %}
@@ -255,4 +273,8 @@ body {
 <br>
 
 </body>
+<script src="//unpkg.com/layui@2.6.7/dist/layui.js"></script>
+<script>
+
+</script>
 </html>

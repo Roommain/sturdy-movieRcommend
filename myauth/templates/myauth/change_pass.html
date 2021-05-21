@@ -6,20 +6,31 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    color: beige;
+    color: #fff;
 }
-    a{
-        color: beige;
+   .box a{
+        {#color: beige;#}
+        margin: 20px;
+    }
+    .box {
+        width: 500px;
+        margin: 10% auto;
+        {#background-color: #fff;#}
+    }
+    .box h1 {
+        margin: 10px;
     }
 </style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>修改密码</title>
+    <link rel="stylesheet" href="//unpkg.com/layui@2.6.7/dist/css/layui.css">
 </head>
 <body>
-    <h1>个人中心</h1>
+<div class="layui-panel box">
+    <h1>修改密码</h1>
     <a href="{% url 'myauth:index' %}">回到主页</a>
     <a href="{% url 'myauth:user_center' %}">个人中心</a>
     <a href="{% url 'myauth:edit_pro' %}">编辑个人信息</a>
@@ -28,7 +39,8 @@ body {
     <form action="" method="post">
         {% csrf_token %}
         {{ changepassform.as_p }}
-        <button type="submit">提交</button>
+        <button type="submit" class="layui-btn layui-btn-fluid">提交</button>
     </form>
+</div>
 </body>
 </html>

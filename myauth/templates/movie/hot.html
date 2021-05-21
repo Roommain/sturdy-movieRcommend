@@ -1,61 +1,73 @@
 {% load static %}
-<style type="text/css">
-body {
-    background-image: url("{% static 'img/showMovie/bg.jpg' %}");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: beige;
-}
-    a {
-        color: beige;
-        text-decoration: none;
-    }
-
-    ul li{
-        list-style-type: none;
-        line-height: 50px;
-    }
-
-    .left{
-        #background-color: #1b6d85;
-        width: 20%;
-        height: 650px;
-        float: left;
-    }
-    .right{
-        #background-color: #1CBF11;
-        width: 80%;
-        float:right;
-        height: auto;
-    }
-    
-    .showMovie{
-        float: left;
-        text-align: center;
-        line-height: 2px;
-        margin: 20 ;
-    }
-</style>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="referrer" content="never">
+    <link rel="stylesheet" href="//unpkg.com/layui@2.6.7/dist/css/layui.css">
+    <style type="text/css">
+    body {
+        background-image: url("{% static 'img/showMovie/bg.jpg' %}");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: #fff;
+    }
+        .left a {
+            margin: 20px 0 0 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        ul li{
+            list-style-type: none;
+            line-height: 50px;
+        }
+
+        h1 {
+            margin: 20px;
+            color: #fff;
+        }
+        .left{
+            color: #fff;
+            width: 20%;
+            height: 650px;
+            float: left;
+        }
+        .right{
+            width: 80%;
+            float:right;
+            height: auto;
+        }
+        h4 {
+               {#width: 200px;#}
+               {#background-color: #46b8da;#}
+               color: #fff;
+               text-align: center;
+           }
+        .showMovie{
+            float: left;
+            text-align: center;
+            margin: 20px ;
+        }
+        .a {
+            margin: 20px;
+            color: #fff;
+        }
+    </style>
     <title>电影推荐</title>
 </head>
 <body>
-    <a href="{% url 'myauth:index' %}">返回主页</a>
+    <a class="a" href="{% url 'myauth:index' %}">返回主页</a>
     <h1>以下是为你推荐的电影，希望你喜欢</h1>
 
     <div class="left">
         <ul>
             <li><a href="{% url 'myauth:hot' %}">热门推荐</a>></li>
-            <li><a href="{% url 'myauth:recommd1' %}">量身定制一</a>></li>
-            <li><a href="{% url 'myauth:recommd2' %}">量身定制二</a>></li>
-            <li><a href="{% url 'myauth:recommd3' %}">量身定制三</a>></li>
+            <li><a href="{% url 'myauth:recommd1' %}">量身定制推荐</a>></li>
+{#            <li><a href="{% url 'myauth:recommd2' %}">量身定制二</a>></li>#}
+{#            <li><a href="{% url 'myauth:recommd3' %}">量身定制三</a>></li>#}
 
         </ul>
     </div>
@@ -69,10 +81,8 @@ body {
                         <form action="{% url 'myauth:showMovie' %}" method="post">
                            {% csrf_token %}
                            <input type="hidden" value={{ x.movie_name }} name="movie_name">
-                           <button type="submit">
-                           {{ x.movie_name }}
+                            <button type="submit" style="width: 200px;" class="layui-btn layui-btn-fluid">{{ x.movie_name }}</button>
                        </form>
-                        <br>
                         <h4>评分:{{ x.movie_point }}</h4>
                     </div>
                     {% endfor %}
