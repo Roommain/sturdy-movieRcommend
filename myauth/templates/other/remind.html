@@ -1,0 +1,38 @@
+{% load static %}
+<style type="text/css">
+body {
+    background-image: url("{% static 'img/showMovie/kaozy.jpg' %}");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    {#color: beige;#}
+}
+    a {
+        color: #f60;
+        text-decoration: none;
+    }
+
+    .show{
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+        margin: 200px auto;
+        font-weight: 900;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户提醒</title>
+</head>
+<body>
+    <div class="show">
+        <p>此网站必须登录才能使用</p>
+        <p>你可以选择去<a href="{% url 'myauth:slogin' %}">登录</a>
+            或者<a href="{% url 'myauth:register' %}">注册</a></p>
+    </div>
+</body>
+</html>

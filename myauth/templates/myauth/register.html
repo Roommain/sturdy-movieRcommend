@@ -1,0 +1,131 @@
+{% load static %}
+<style type="text/css">
+    body {
+        background-image: url("{% static 'img/showMovie/bg.jpg' %}");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: beige;
+    }
+    .form-box {
+        margin-top: 20px;
+    }
+    h1 {
+        margin: 20px auto;
+        text-align: center;
+    }
+    ul li{
+       list-style: none;
+    }
+    a{
+        color: beige;
+    }
+    .main {
+        width: 400px;
+        min-height: 500px;
+        margin: 10% auto;
+        background-color: #fff;
+        border-radius: 20px;
+    }
+    .error{
+        color: red;
+    }
+    .btn-submit {
+        margin: 10px auto;
+        text-align: center;
+    }
+    .btn-submit button {
+        width: 300px;
+    }
+    .register {
+        width: 300px;
+        margin: 20px auto;
+    }
+    .main .layui-form-item .layui-input-inline {
+        width: 260px;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//unpkg.com/layui@2.6.7/dist/css/layui.css">
+    <title>注册</title>
+</head>
+<body>
+<div class="main">
+    <h1>注册</h1>
+{#    <a href="{% url 'myauth:index' %}">回到主页</a>#}
+    {% if registerform.errors %}
+        <div class="error">{{ registerform.errors }}</div>
+    {% endif %}
+    <form action="" method="post" class="form-box">
+        {% csrf_token %}
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号：</label>
+            <div class="layui-input-inline">
+              <input type="text" name="username" id="id_username" maxlength="50" required lay-verify="required" placeholder="50个字符或者更少" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码：</label>
+            <div class="layui-input-inline">
+              <input type="password" name="password1" required id="id_password1" lay-verify="required" required placeholder="密码必须包含至少8个字符" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码确认：</label>
+            <div class="layui-input-inline">
+              <input type="password" name="password2" required id="id_password2" lay-verify="required" placeholder="请输入与上面相同的密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电子邮件：</label>
+            <div class="layui-input-inline">
+              <input type="email" name="email" id="id_email" maxlength="50" required lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称：</label>
+            <div class="layui-input-inline">
+              <input type="text" name="nikname" id="id_nikname" maxlength="50" required lay-verify="required" placeholder="50个字符或者更少" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">生日：</label>
+            <div class="layui-input-inline">
+              <input type="date" name="birthday" id="id_birthday" required lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="btn-submit">
+            <button type="submit" type="button" class="layui-btn layui-btn-radius" class="layui-btn layui-btn-sm">提交注册</button>
+        </div>
+{#        <p><label for="id_username">用户名:</label> <input type="text" name="username" maxlength="150" autofocus required id="id_username"> <span class="helptext">必填。150个字符或者更少。包含字母，数字和仅有的@/./+/-/_符号。</span>#}
+{#        </p>#}
+{#        <p><label for="id_password1">密码:</label> <input type="password" name="password1" required id="id_password1">#}
+{#            <span class="helptext"><ul><li>你的密码不能与其他个人信息太相似。</li><li>你的密码必须包含至少 8 个字符。</li><li>你的密码不能是大家都爱用的常见密码。</li><li>你的密码不能全部为数字。</li></ul></span>#}
+{#        </p>#}
+{#        <p><label for="id_password2">密码确认:</label> <input type="password" name="password2" required id="id_password2">#}
+{#            <span class="helptext">为了校验，请输入与上面相同的密码。</span></p>#}
+{#        <p><label for="id_email">电子邮件地址:</label> <input type="email" name="email" maxlength="254" id="id_email"></p>#}
+{#        <p><label for="id_nikname">Nikname:</label> <input type="text" name="nikname" maxlength="50" required#}
+{#                                                           id="id_nikname"></p>#}
+{#        <p><label for="id_birthday">Birthday:</label> <input type="date" name="birthday" required id="id_birthday"></p>#}
+{#        <button type="submit">注册</button>#}
+{#        <a href="{% url 'myauth:index' %}">回到主页</a>#}
+    </form>
+    <div class="register">
+        <a href="{% url 'myauth:index' %}">回到主页</a>
+    </div>
+</div>
+</body>
+<script src="//unpkg.com/layui@2.6.7/dist/layui.js"></script>
+
+</html>
